@@ -148,7 +148,7 @@ setInterval(updateTime,1000);
 //setInterval(autoTrack,5000);
 var osmUrl='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
 var osm=new L.TileLayer(osmUrl,{minZoom:2,maxZoom:18,noWrap:true,});
-//map.addLayer(marker);
+map.addLayer(marker);
 map.addLayer(osm);
 //map.addLayer(circle);
 var credits=L.control.attribution().addTo(map);
@@ -441,6 +441,8 @@ jQuery.getJSON("https://api.myjson.com/bins/2f5ag", function(data){
 	pokemonList = data;
 	redrawMarker();
 	updateTimer();
+	map.locate();
+	marker.setLatLng(map.getCenter());
 });
 },5000);
 
